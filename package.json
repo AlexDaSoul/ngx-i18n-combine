@@ -1,0 +1,80 @@
+{
+    "name": "@angular-ru/ngx-i18n-combine",
+    "description": "Merge i18n files from components and merge to common locale files",
+    "version": "1.1.0",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "files": [
+        "bin/",
+        "dist/"
+    ],
+    "bin": {
+        "ngx-i18n-combine": "bin/cli.js"
+    },
+    "scripts": {
+        "build": "npm run clean && tsc",
+        "watch": "npm run clean && tsc --watch",
+        "clean": "rm -rf ./dist",
+        "lint": "tslint -p tsconfig.json -c tslint.json src/**/*.ts",
+        "lint-fix": "tslint -p tsconfig.json -c tslint.json src/**/*.ts --fix",
+        "test": "mocha -r ts-node/register tests/**/*.spec.ts",
+        "test-merge": "node ./bin/cli.js -i test-combine/src/**/i18n/*.json -o test-combine/assets/i18n/*.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Angular-RU/ngx-i18n-combine.git"
+    },
+    "keywords": [
+        "angular",
+        "angular2",
+        "ionic",
+        "ionic2",
+        "ng2-translate",
+        "ngx-translate",
+        "extract",
+        "extractor",
+        "merge",
+        "combine",
+        "translate",
+        "translation",
+        "i18n",
+        "json",
+        "json-files",
+        "merge-json"
+    ],
+    "author": "Alexander Dukhnovsky <alexdasoul@google.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Angular-RU/ngx-i18n-combine/issues"
+    },
+    "engines": {
+        "node": ">=4.3.2"
+    },
+    "devDependencies": {
+        "@types/app-root-path": "^1.2.4",
+        "@types/chai": "4.0.1",
+        "@types/chalk": "0.4.31",
+        "@types/glob": "5.0.30",
+        "@types/jasmine": "^2.8.4",
+        "@types/mkdirp": "0.3.29",
+        "@types/mocha": "2.2.41",
+        "@types/node": "^9.3.0",
+        "@types/yargs": "8.0.0",
+        "chai": "^4.0.2",
+        "codelyzer": "^4.0.2",
+        "mocha": "3.4.2",
+        "ts-node": "^4.1.0",
+        "tslint": "^5.9.1",
+        "typescript": "^2.6.2"
+    },
+    "dependencies": {
+        "app-root-path": "^2.0.1",
+        "chalk": "2.0.1",
+        "fs": "0.0.1-security",
+        "glob": "7.1.2",
+        "mkdirp": "0.5.1",
+        "path": "0.12.7",
+        "sort-keys": "^2.0.0",
+        "yargs": "8.0.2"
+    }
+}

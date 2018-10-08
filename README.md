@@ -1,6 +1,6 @@
 # ngx-i18n-combine
 
-Combine files from components i18n directory to assets. For example one-component/i18n/[lang].json and two-component/i18n/[lang].json to assets/i18/[lang].json
+Combine i18n locale files from components i18n directory to assets. For example one-component/i18n/[lang].json and two-component/i18n/[lang].json to assets/i18/[lang].json
 
 ## Install
 

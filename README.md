@@ -4,7 +4,7 @@ Combine i18n locale files from components i18n directory to assets. For example 
 
 ## Install
 
-``npm install --save @angular-ru/ngx-i18n-combine``
+``npm install --save ngx-i18n-combine``
 
 ## Usage
 

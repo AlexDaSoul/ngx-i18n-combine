@@ -18,7 +18,7 @@
         "lint": "tslint -p tsconfig.json -c tslint.json src/**/*.ts",
         "lint-fix": "tslint -p tsconfig.json -c tslint.json src/**/*.ts --fix",
         "test": "mocha -r ts-node/register tests/**/*.spec.ts",
-        "test-merge": "node ./bin/cli.js -i test-combine/src/**/i18n/*.json -o test-combine/assets/i18n/*.json"
+        "test-merge": "node ./dist/cli -i test-combine/src/**/i18n/*.json -o test-combine/assets/i18n/*.json"
     },
     "repository": {
         "type": "git",
@@ -69,7 +69,7 @@
         "app-root-path": "^3.0.0",
         "glob": "7.2.0",
         "picocolors": "^1.0.0",
-        "sort-keys": "^5.0.0",
+        "sort-keys": "^4.2.0",
         "yargs": "17.3.1"
     }
 }

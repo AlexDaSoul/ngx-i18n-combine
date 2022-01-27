@@ -1,7 +1,7 @@
 {
     "name": "ngx-i18n-combine",
     "description": "Merge i18n files from components and merge to common locale files",
-    "version": "2.0.0",
+    "version": "1.2.0",
     "main": "dist/index.js",
     "typings": "dist/index.d.ts",
     "files": [

@@ -10,7 +10,7 @@ import {
     Parser,
     Compiller
 } from '../index';
-import * as process from "process";
+import * as process from 'process';
 
 /** Set CLI */
 export const cli = yargs(yargsHelpers.hideBin(process.argv))

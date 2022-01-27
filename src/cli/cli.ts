@@ -1,4 +1,5 @@
-import * as yargs from 'yargs';
+import yargs from 'yargs';
+import * as yargsHelpers from 'yargs/helpers';
 
 import {
     ICombineOptions,
@@ -9,9 +10,10 @@ import {
     Parser,
     Compiller
 } from '../index';
+import * as process from 'process';
 
 /** Set CLI */
-export const cli = yargs
+export const cli = yargs(yargsHelpers.hideBin(process.argv))
     .usage('Extract and merge locale files.\nUsage: $0 [options]')
     .version(require(`${__dirname}/../../package.json`).version)
     .alias('version', 'v')
@@ -20,7 +22,7 @@ export const cli = yargs
     .option('input', {
         alias: 'i',
         describe: 'Paths you would like to extract files from. You can use path expansion, glob patterns and multiple paths',
-        default: process.env.PWD,
+        default: [process.env.PWD || process.cwd()],
         type: 'array',
         normalize: true
     })
@@ -62,7 +64,7 @@ export const cli = yargs
         type: 'boolean'
     })
     .exitProcess(true)
-    .parse(process.argv);
+    .parseSync();
 
 
 /** Set Options from CLI */

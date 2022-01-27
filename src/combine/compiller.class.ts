@@ -1,7 +1,6 @@
-import * as chalk from 'chalk';
+import pc from 'picocolors';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as mkdirp from 'mkdirp';
 import * as sort from 'sort-keys';
 
 import { ICombineOptions, ICompiller, ILocale, ILocales } from './combine.interfaces';
@@ -28,7 +27,7 @@ export class Compiller implements ICompiller {
      * @return {void}
      */
     public compile(locales: ILocales): void {
-        this.log(chalk.bold('\r\n Compile files...'));
+        this.log(pc.bold('\r\n Compile files...'));
 
         this.options.output.forEach((filesPath: string) => {
 
@@ -52,11 +51,11 @@ export class Compiller implements ICompiller {
 
 
             /** Add directories if not found */
-            mkdirp(directory, (err) => {
+            fs.mkdir(directory, { recursive: true }, (err) => {
                 if (err) {
 
                     /** If error */
-                    this.log(chalk.bold.red('ERROR: directory is not added'));
+                    this.log(pc.red(pc.bold('ERROR: directory is not added')));
                 } else {
 
                     /** Set locale files */
@@ -103,7 +102,7 @@ export class Compiller implements ICompiller {
             content = sort(content, { deep: true });
 
             /** Log */
-            this.log(chalk.dim('- sorted strings'));
+            this.log(pc.dim('- sorted strings'));
         }
 
 
@@ -111,7 +110,7 @@ export class Compiller implements ICompiller {
         const file: string = path.normalize(`${directory}/${name}${extname || '.json'}`);
 
         /** Tab for code style formatting */
-        const indentation: string = !this.options.minify ? this.options.indent : null;
+        const indentation: string | undefined = !this.options.minify ? this.options.indent : undefined;
 
         /** Get file format type */
         const ifEsFormat = ['js', 'ts', 'tsx', 'jsx'].includes(name[1]);
@@ -129,7 +128,7 @@ export class Compiller implements ICompiller {
         if (this.options.verbose) {
 
             /** Log results */
-            this.log(chalk.gray('- %s'), file);
+            this.log(pc.gray('- %s'), file);
         }
     }
 
@@ -142,6 +141,6 @@ export class Compiller implements ICompiller {
      * @return {void}
      */
     private log(...args: any[]): void {
-        console.log.apply(this, arguments);
+        console.log.apply(this, args);
     }
 }

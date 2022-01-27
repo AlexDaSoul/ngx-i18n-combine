@@ -6,7 +6,7 @@
         "noImplicitAny": true,
         "removeComments": true,
         "declaration": true,
-        "target": "es5",
+        "target": "es2015",
         "lib": [
             "dom",
             "es2016"
@@ -19,7 +19,10 @@
         ],
         "types": [
             "jasmine"
-        ]
+        ],
+        "esModuleInterop": true,
+        "strict": true,
+        "moduleResolution": "node"
     },
     "include": [
         "src/**/*.ts"

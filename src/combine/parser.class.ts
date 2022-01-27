@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import pc from 'picocolors';
 import * as glob from 'glob';
 import * as fs from 'fs';
 import * as root from 'app-root-path';
@@ -22,7 +22,7 @@ export class Parser implements IParser {
      * @access private
      * @type {ILocales}
      */
-    private locales: ILocales;
+    private locales: ILocales = {};
 
     constructor(private options: ICombineOptions) {
     }
@@ -35,7 +35,7 @@ export class Parser implements IParser {
      * @return {ILocales}
      */
     public parse(): ILocales {
-        this.log(chalk.bold('Parse files...'));
+        this.log(pc.bold('Parse files...'));
 
         /** Init field with an empty object */
         this.locales = {};
@@ -49,7 +49,7 @@ export class Parser implements IParser {
             if (!files.length) {
 
                 /** If files not found */
-                this.log(chalk.bold.red('ERROR: files not found'));
+                this.log(pc.red(pc.bold('ERROR: files not found')));
             } else {
 
                 /** Set ILocale from files */
@@ -86,7 +86,7 @@ export class Parser implements IParser {
         if (!Object.keys(parseObject).length) {
 
             /** If file is empty */
-            this.log(chalk.bold.red(`ERROR: File is empty: ${file}`));
+            this.log(pc.red(pc.bold(`ERROR: File is empty: ${file}`)));
         } else {
 
             /** Set log if replace double strings */
@@ -101,7 +101,7 @@ export class Parser implements IParser {
             if (this.options.verbose) {
 
                 /** Log results */
-                this.log(chalk.gray('- %s'), file);
+                this.log(pc.gray('- %s'), file);
             }
         }
     }
@@ -152,7 +152,7 @@ export class Parser implements IParser {
                 if (keys.includes(key)) {
 
                     /** If replaced string */
-                    this.log(chalk.bold.red('String it was replaced: %s'), key);
+                    this.log(pc.red(pc.bold('String it was replaced: %s')), key);
                 }
             }
         }
@@ -167,6 +167,6 @@ export class Parser implements IParser {
      * @return {void}
      */
     private log(...args: any[]): void {
-        console.log.apply(this, arguments);
+        console.log.apply(this, args);
     }
 }

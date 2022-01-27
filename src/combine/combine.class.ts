@@ -1,4 +1,4 @@
-import * as chalk from 'chalk';
+import pc from 'picocolors';
 import * as glob from 'glob';
 import * as fs from 'fs';
 import * as root from 'app-root-path';
@@ -22,7 +22,7 @@ export class Combine implements ICombine {
      * @access private
      * @type {ILocales}
      */
-    private locales: ILocales;
+    private locales: ILocales = {};
 
     constructor(private options: ICombineOptions, private parser: IParser, private compiller: ICompiller) {
     }
@@ -68,7 +68,7 @@ export class Combine implements ICombine {
             if (!files.length) {
 
                 /** If files not found */
-                this.log(chalk.bold.red('ERROR: files not found'));
+                this.log(pc.red(pc.bold('ERROR: files not found')));
             } else {
 
                 /** Set ILocale from files */
@@ -118,6 +118,6 @@ export class Combine implements ICombine {
      * @return {void}
      */
     private log(...args: any[]): void {
-        console.log.apply(this, arguments);
+        console.log.apply(this, args);
     }
 }
